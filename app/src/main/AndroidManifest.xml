@@ -15,9 +15,7 @@
         <activity
             android:name=".DetailsActivity"
             android:exported="false" />
-        <activity
-            android:name=".activity_details"
-            android:exported="false" />
+
         <activity
             android:name=".MainActivity"
             android:exported="true">
