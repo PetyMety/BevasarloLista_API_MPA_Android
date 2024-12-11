@@ -71,5 +71,25 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
+
+        /*
+        RetrofitApiService apiService = RetrofitClient.getInstance().create(RetrofitApiService.class);
+        loadPeople(apiService);
+        showAddFormButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                formLinearLayout.setVisibility(View.VISIBLE);
+                showAddFormButton.setVisibility(View.GONE);
+            }
+        });
+        cancelButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                formLinearLayout.setVisibility(View.GONE);
+                showAddFormButton.setVisibility(View.VISIBLE);
+            }
+        });
+        */
+
     }
 }
