@@ -28,14 +28,28 @@
                     android:id="@+id/detail_item_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="valami"
+                    android:text="termekneve"
                     android:textSize="24sp" />
 
                 <TextView
                     android:id="@+id/detail_item_quantity"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="alma"
+                    android:text="mennyiseg"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/detail_item_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ar"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/detail_item_category"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="kategoria"
                     android:textSize="18sp" />
 
             </LinearLayout>

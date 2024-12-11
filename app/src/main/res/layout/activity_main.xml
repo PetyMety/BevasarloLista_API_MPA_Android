@@ -21,6 +21,19 @@
         android:hint="Mennyiség"
         android:inputType="number"/>
 
+    <EditText
+        android:id="@+id/item_price"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Termék ára"
+        android:inputType="number"/>
+
+    <EditText
+        android:id="@+id/item_category"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Kategória"/>
+
     <Button
         android:id="@+id/add_button"
         android:layout_width="match_parent"

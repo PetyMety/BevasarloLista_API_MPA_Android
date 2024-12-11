@@ -29,6 +29,8 @@ public class MainActivity extends AppCompatActivity {
 
         EditText itemNameEditText = findViewById(R.id.item_name);
         EditText itemQuantityEditText = findViewById(R.id.item_quantity);
+        EditText itemPriceEditText = findViewById(R.id.item_price);
+        EditText itemCategoryEditText = findViewById(R.id.item_category);
         Button addButton = findViewById(R.id.add_button);
 
         addButton.setOnClickListener(new View.OnClickListener() {
@@ -36,10 +38,15 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String name = itemNameEditText.getText().toString();
                 int quantity = Integer.parseInt(itemQuantityEditText.getText().toString());
-                shoppingList.add(new ShoppingItem(name, quantity));
+                int price = Integer.parseInt(itemPriceEditText.getText().toString());
+                String category = itemCategoryEditText.getText().toString();
+
+                shoppingList.add(new ShoppingItem(name, quantity, price, category));
                 adapter.notifyDataSetChanged();
                 itemNameEditText.setText("");
                 itemQuantityEditText.setText("");
+                itemPriceEditText.setText("");
+                itemCategoryEditText.setText("");
             }
         });
 
@@ -50,6 +57,8 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(MainActivity.this, DetailsActivity.class);
                 intent.putExtra("ITEM_NAME", item.getName());
                 intent.putExtra("ITEM_QUANTITY", item.getQuantity());
+                intent.putExtra("ITEM_PRICE", item.getPrice());
+                intent.putExtra("ITEM_CATEGORY", item.getCategory());
                 startActivity(intent);
             }
         });

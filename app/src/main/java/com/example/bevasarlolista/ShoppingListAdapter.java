@@ -31,10 +31,14 @@ public class ShoppingListAdapter extends ArrayAdapter<ShoppingItem> {
 
         TextView nameTextView = convertView.findViewById(R.id.item_name);
         TextView quantityTextView = convertView.findViewById(R.id.item_quantity);
+        TextView priceTextView = convertView.findViewById(R.id.item_price);
+        TextView categoryTextView = convertView.findViewById(R.id.item_category);
         CardView cardView = convertView.findViewById(R.id.card_view);
 
         nameTextView.setText(item.getName());
         quantityTextView.setText(String.valueOf(item.getQuantity()));
+        priceTextView.setText(String.valueOf(item.getPrice()));
+        categoryTextView.setText(item.getCategory());
 
         return convertView;
     }
