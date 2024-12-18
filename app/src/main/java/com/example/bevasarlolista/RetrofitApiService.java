@@ -12,23 +12,23 @@ import retrofit2.http.Path;
 
 public interface RetrofitApiService {
 
-    // GET all users
-    @GET("acttFJ/people")
-    Call<List<People>> getAllPeople();
+    // GET all products
+    @GET("gIvxIY/data")
+    Call<List<ShoppingItem>> getAllShoppingItem();
 
-    // GET user by ID
-    @GET("acttFJ/people/{id}")
-    Call<People> getPeopleById(@Path("id") int id);
+    // GET product by ID
+    @GET("gIvxIY/data/{id}")
+    Call<ShoppingItem> getShoppingItemById(@Path("id") int id);
 
-    // POST (create a new user)
-    @POST("acttFJ/people")
-    Call<People> createPeople(@Body People people);
+    // POST (create a new product)
+    @POST("gIvxIY/data")
+    Call<ShoppingItem> createShoppingItem(@Body ShoppingItem shoppingItem);
 
-    // PUT (update a user)
-    @PUT("acttFJ/people/{id}")
-    Call<People> updatePeople(@Path("id") int id, @Body People people);
+    // PUT (update a product)
+    @PUT("gIvxIY/data/{id}")
+    Call<ShoppingItem> updateShoppingItem(@Path("id") int id, @Body ShoppingItem shoppingItem);
 
-    // DELETE (delete a user by ID)
-    @DELETE("acttFJ/people/{id}")
-    Call<Void> deletePeople(@Path("id") int id);
+    // DELETE (delete a product by ID)
+    @DELETE("gIvxIY/data/{id}")
+    Call<Void> deleteShoppingItem(@Path("id") int id);
 }

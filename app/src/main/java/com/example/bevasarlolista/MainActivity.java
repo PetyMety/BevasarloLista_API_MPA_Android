@@ -6,15 +6,23 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
     private ArrayList<ShoppingItem> shoppingList;
     private ShoppingListAdapter adapter;
+    private LinearLayout formLinearLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +40,8 @@ public class MainActivity extends AppCompatActivity {
         EditText itemPriceEditText = findViewById(R.id.item_price);
         EditText itemCategoryEditText = findViewById(R.id.item_category);
         Button addButton = findViewById(R.id.add_button);
+
+        formLinearLayout = findViewById(R.id.formLinearLayout);
 
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,24 +82,30 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        /*
-        RetrofitApiService apiService = RetrofitClient.getInstance().create(RetrofitApiService.class);
-        loadPeople(apiService);
-        showAddFormButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                formLinearLayout.setVisibility(View.VISIBLE);
-                showAddFormButton.setVisibility(View.GONE);
-            }
-        });
-        cancelButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                formLinearLayout.setVisibility(View.GONE);
-                showAddFormButton.setVisibility(View.VISIBLE);
-            }
-        });
-        */
 
+        RetrofitApiService apiService = RetrofitClient.getInstance().create(RetrofitApiService.class);
+        loadShoppingItem(apiService);
+
+    }
+
+    public void loadShoppingItem(RetrofitApiService apiService) {
+
+        apiService.getAllShoppingItem().enqueue(new Callback<List<ShoppingItem>>() {
+            @Override
+            public void onResponse(Call<List<ShoppingItem>> call, Response<List<ShoppingItem>> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    shoppingList.clear();
+                    shoppingList.addAll(response.body());
+                    adapter.notifyDataSetChanged();
+                } else {
+                    Toast.makeText(MainActivity.this, "Fail to load the people list", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<ShoppingItem>> call, Throwable t) {
+                Toast.makeText(MainActivity.this, "Error loading the people list", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }

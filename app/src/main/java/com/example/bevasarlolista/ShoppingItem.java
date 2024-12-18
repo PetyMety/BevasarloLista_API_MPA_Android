@@ -30,5 +30,19 @@ public class ShoppingItem {
         return category;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
 
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
 }
